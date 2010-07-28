@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BlogTableViewCell.h"
+#import "BlogEntryViewController.h"
 
 @interface BlogViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
     IBOutlet UITableView *blogTableView;
@@ -17,11 +18,12 @@
     NSMutableArray * stories; 
     NSMutableDictionary * item;
     NSString * currentElement; 
-    NSMutableString * currentTitle, * currentDate, * currentSummary, * currentLink; 
+    NSMutableString * currentTitle, * currentDate, * currentDescription, * currentCreator, * currentUrl;
+    BlogEntryViewController *entryController;
 }
 
 @property (nonatomic, retain) UITableView *blogTableView;
-
+@property (nonatomic, retain) BlogEntryViewController *entryController;
 - (NSString *)flattenHTML:(NSString *)html;
 
 @end

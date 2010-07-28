@@ -11,7 +11,7 @@
 
 @implementation BlogViewController
 
-@synthesize blogTableView;
+@synthesize blogTableView, entryController;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -79,8 +79,9 @@
         item = [[NSMutableDictionary alloc] init]; 
         currentTitle = [[NSMutableString alloc] init]; 
         currentDate = [[NSMutableString alloc] init]; 
-        currentSummary = [[NSMutableString alloc] init]; 
-        currentLink = [[NSMutableString alloc] init]; 
+        currentDescription = [[NSMutableString alloc] init]; 
+        currentCreator = [[NSMutableString alloc] init]; 
+        currentUrl = [[NSMutableString alloc] init];
     } 
 } 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{ 
@@ -88,9 +89,10 @@
     if ([elementName isEqualToString:@"item"]) { 
         // save values to an item, then store that item into the array... 
         [item setObject:currentTitle forKey:@"title"]; 
-        [item setObject:currentLink forKey:@"link"]; 
-        [item setObject:currentSummary forKey:@"description"]; 
+        [item setObject:currentCreator forKey:@"dc:creator"]; 
+        [item setObject:currentDescription forKey:@"description"]; 
         [item setObject:currentDate forKey:@"pubDate"]; 
+        [item setObject:currentUrl forKey:@"link"];
         [stories addObject:[item copy]]; 
         NSLog(@"adding story: %@", currentTitle); 
     } 
@@ -100,12 +102,14 @@
     // save the characters for the current item... 
     if ([currentElement isEqualToString:@"title"]) { 
         [currentTitle appendString:string]; 
-    } else if ([currentElement isEqualToString:@"link"]) { 
-        [currentLink appendString:string]; 
+    } else if ([currentElement isEqualToString:@"dc:creator"]) { 
+        [currentCreator appendString:string]; 
     } else if ([currentElement isEqualToString:@"description"]) { 
-        [currentSummary appendString:string]; 
+        [currentDescription appendString:string]; 
     } else if ([currentElement isEqualToString:@"pubDate"]) { 
         [currentDate appendString:string]; 
+    } else if ([currentElement isEqualToString:@"link"]) { 
+        [currentUrl appendString:string]; 
     } 
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser { 
@@ -144,6 +148,8 @@
     int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1]; 
     cell.title.text = [[stories objectAtIndex:storyIndex] objectForKey:@"title"];
     cell.description.text = [self flattenHTML:[[stories objectAtIndex:storyIndex] objectForKey:@"description"]];
+    cell.date.text = [[[stories objectAtIndex:storyIndex] objectForKey:@"pubDate"] substringToIndex:16];
+    cell.creator.text = [[stories objectAtIndex:storyIndex] objectForKey:@"dc:creator"];
     //load image here later
     return cell; 
 }
@@ -178,6 +184,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [stories count];
 }
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    
+    int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1];
+    if (entryController == nil) {
+        self.entryController = [[BlogEntryViewController alloc] initWithNibName:@"BlogEntryView" bundle:[NSBundle mainBundle]];
+    }
+    entryController.url = [[stories objectAtIndex:storyIndex] objectForKey:@"link"];
+    NSLog(@"%@", entryController.url);
+    [self.view addSubview:[entryController view]];
+}
 - (void)dealloc {
     [currentElement release]; 
     [rssParser release]; 
@@ -185,8 +201,8 @@
     [item release]; 
     [currentTitle release];
     [currentDate release];
-    [currentSummary release]; 
-    [currentLink release]; 
+    [currentDescription release]; 
+    [currentCreator release]; 
     [super dealloc];
 }
 

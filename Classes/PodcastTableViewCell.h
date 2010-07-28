@@ -12,7 +12,12 @@
 @interface PodcastTableViewCell : UITableViewCell {
     IBOutlet UILabel *title;
     IBOutlet UILabel *description;
+    IBOutlet UILabel *date;
+    IBOutlet UILabel *length;
 }
 @property (nonatomic, retain) UILabel *title;
 @property (nonatomic, retain) UILabel *description;
+@property (nonatomic, retain) UILabel *date;
+@property (nonatomic, retain) UILabel *length;
+
 @end

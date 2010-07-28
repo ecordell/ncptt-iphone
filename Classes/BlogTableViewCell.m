@@ -10,7 +10,7 @@
 
 
 @implementation BlogTableViewCell
-@synthesize title, description, blogImage;
+@synthesize title, description, date, creator, blogImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {

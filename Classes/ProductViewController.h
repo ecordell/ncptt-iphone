@@ -17,7 +17,7 @@
     NSMutableArray * stories; 
     NSMutableDictionary * item;
     NSString * currentElement; 
-    NSMutableString * currentTitle, * currentDate, * currentSummary, * currentLink; 
+    NSMutableString * currentTitle, * currentDescription; 
 }
 
 @property (nonatomic, retain) UITableView *productTableView;

@@ -10,7 +10,7 @@
 
 
 @implementation PodcastTableViewCell
-@synthesize title, description;
+@synthesize title, description, date, length;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {

@@ -12,9 +12,13 @@
 @interface BlogTableViewCell : UITableViewCell {
     IBOutlet UILabel *title;
     IBOutlet UILabel *description;
+    IBOutlet UILabel *date;
+    IBOutlet UILabel *creator;
     IBOutlet UIImageView *blogImage;
 }
 @property (nonatomic, retain) UILabel *title;
 @property (nonatomic, retain) UILabel *description;
+@property (nonatomic, retain) UILabel *date;
+@property (nonatomic, retain) UILabel *creator;
 @property (nonatomic, retain) UIImageView *blogImage;
 @end

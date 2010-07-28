@@ -21,6 +21,8 @@
 		09F854DB1200BCA10023F691 /* TrainingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F854D81200BCA10023F691 /* TrainingTableViewCell.m */; };
 		09F854DC1200BCA10023F691 /* TrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F854DA1200BCA10023F691 /* TrainingViewController.m */; };
 		09F854DE1200BCAC0023F691 /* TrainingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F854DD1200BCAC0023F691 /* TrainingViewCell.xib */; };
+		09F855B21200DAE80023F691 /* BlogEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F855B11200DAE80023F691 /* BlogEntryViewController.m */; };
+		09F855DC1200DF590023F691 /* BlogEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F855DB1200DF590023F691 /* BlogEntryView.xib */; };
 		1D3623260D0F684500981E51 /* NCPTTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* NCPTTAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -53,6 +55,9 @@
 		09F854D91200BCA10023F691 /* TrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingViewController.h; sourceTree = "<group>"; };
 		09F854DA1200BCA10023F691 /* TrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingViewController.m; sourceTree = "<group>"; };
 		09F854DD1200BCAC0023F691 /* TrainingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingViewCell.xib; sourceTree = "<group>"; };
+		09F855B01200DAE80023F691 /* BlogEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogEntryViewController.h; sourceTree = "<group>"; };
+		09F855B11200DAE80023F691 /* BlogEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogEntryViewController.m; sourceTree = "<group>"; };
+		09F855DB1200DF590023F691 /* BlogEntryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlogEntryView.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* NCPTTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPTTAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* NCPTTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPTTAppDelegate.m; sourceTree = "<group>"; };
@@ -104,6 +109,8 @@
 				1D3623250D0F684500981E51 /* NCPTTAppDelegate.m */,
 				09F853B4120091E00023F691 /* BlogTableViewCell.h */,
 				09F853B5120091E00023F691 /* BlogTableViewCell.m */,
+				09F855B01200DAE80023F691 /* BlogEntryViewController.h */,
+				09F855B11200DAE80023F691 /* BlogEntryViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -157,6 +164,7 @@
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* NCPTT-Info.plist */,
 				09F853B9120092C30023F691 /* BlogViewCell.xib */,
+				09F855DB1200DF590023F691 /* BlogEntryView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -220,6 +228,7 @@
 				09F853DB120098680023F691 /* PodcastViewCell.xib in Resources */,
 				09F854A41200B8F70023F691 /* ProductViewCell.xib in Resources */,
 				09F854DE1200BCAC0023F691 /* TrainingViewCell.xib in Resources */,
+				09F855DC1200DF590023F691 /* BlogEntryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +250,7 @@
 				09F854AA1200B9070023F691 /* ProductViewController.m in Sources */,
 				09F854DB1200BCA10023F691 /* TrainingTableViewCell.m in Sources */,
 				09F854DC1200BCA10023F691 /* TrainingViewController.m in Sources */,
+				09F855B21200DAE80023F691 /* BlogEntryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

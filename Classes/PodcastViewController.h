@@ -11,15 +11,23 @@
 
 @interface PodcastViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
     IBOutlet UITableView *podcastTableView;
+    IBOutlet UIButton *subscribeButton;
+    IBOutlet UIButton *rateButton;
+    
     UIActivityIndicatorView * activityIndicator; 
     CGSize cellSize; 
     NSXMLParser * rssParser; 
     NSMutableArray * stories; 
     NSMutableDictionary * item;
     NSString * currentElement; 
-    NSMutableString * currentTitle, * currentDate, * currentSummary, * currentLink; 
+    NSMutableString * currentTitle, * currentDate, * currentDescription, * currentLength; 
 }
 
 @property (nonatomic, retain) UITableView *podcastTableView;
+@property (nonatomic, retain) UIButton *subscribeButton;
+@property (nonatomic, retain) UIButton *rateButton;
+
+-(IBAction)subscribeButtonClicked;
+-(IBAction)rateButtonClicked;
 
 @end

@@ -11,8 +11,15 @@
 
 @implementation PodcastViewController
 
-@synthesize podcastTableView;
+@synthesize podcastTableView, subscribeButton, rateButton;
 
+-(IBAction)subscribeButtonClicked {
+    
+}
+
+-(IBAction)rateButtonClicked {
+    
+}
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -79,8 +86,8 @@
         item = [[NSMutableDictionary alloc] init]; 
         currentTitle = [[NSMutableString alloc] init]; 
         currentDate = [[NSMutableString alloc] init]; 
-        currentSummary = [[NSMutableString alloc] init]; 
-        currentLink = [[NSMutableString alloc] init]; 
+        currentDescription = [[NSMutableString alloc] init]; 
+        currentLength = [[NSMutableString alloc] init]; 
     } 
 } 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{ 
@@ -88,9 +95,9 @@
     if ([elementName isEqualToString:@"item"]) { 
         // save values to an item, then store that item into the array... 
         [item setObject:currentTitle forKey:@"title"]; 
-        [item setObject:currentLink forKey:@"link"]; 
-        [item setObject:currentSummary forKey:@"itunes:summary"]; 
         [item setObject:currentDate forKey:@"pubDate"]; 
+        [item setObject:currentDescription forKey:@"itunes:summary"]; 
+        [item setObject:currentLength forKey:@"itunes:duration"]; 
         [stories addObject:[item copy]]; 
         NSLog(@"adding story: %@", currentTitle); 
     } 
@@ -100,10 +107,10 @@
     // save the characters for the current item... 
     if ([currentElement isEqualToString:@"title"]) { 
         [currentTitle appendString:string]; 
-    } else if ([currentElement isEqualToString:@"link"]) { 
-        [currentLink appendString:string]; 
+    } else if ([currentElement isEqualToString:@"itunes:duration"]) { 
+        [currentLength appendString:string]; 
     } else if ([currentElement isEqualToString:@"itunes:summary"]) { 
-        [currentSummary appendString:string]; 
+        [currentDescription appendString:string]; 
     } else if ([currentElement isEqualToString:@"pubDate"]) { 
         [currentDate appendString:string]; 
     } 
@@ -130,8 +137,8 @@
 
 //UITableView Methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { 
-    static NSString *blogCell = @"PodcastTableViewCell"; 
-    PodcastTableViewCell *cell = (PodcastTableViewCell *)[tableView dequeueReusableCellWithIdentifier:blogCell]; 
+    static NSString *podcastCell = @"PodcastTableViewCell"; 
+    PodcastTableViewCell *cell = (PodcastTableViewCell *)[tableView dequeueReusableCellWithIdentifier:podcastCell]; 
     if (cell == nil) { 
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PodcastViewCell" owner:nil options:nil];
         for (id currentObject in topLevelObjects) {
@@ -144,6 +151,8 @@
     int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1]; 
     cell.title.text = [[stories objectAtIndex:storyIndex] objectForKey:@"title"];
     cell.description.text = [[stories objectAtIndex:storyIndex] objectForKey:@"itunes:summary"];
+    cell.date.text = [[[stories objectAtIndex:storyIndex] objectForKey:@"pubDate"] substringToIndex:16];
+    cell.length.text = [[stories objectAtIndex:storyIndex] objectForKey:@"itunes:duration"];
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -156,8 +165,8 @@
     [item release]; 
     [currentTitle release];
     [currentDate release];
-    [currentSummary release]; 
-    [currentLink release]; 
+    [currentDescription release]; 
+    [currentLength release]; 
     [super dealloc];
 }
 

@@ -12,7 +12,9 @@
 @interface ProductTableViewCell : UITableViewCell {
     IBOutlet UILabel *title;
     IBOutlet UILabel *description;
+    IBOutlet UIImageView *productImage;
 }
 @property (nonatomic, retain) UILabel *title;
 @property (nonatomic, retain) UILabel *description;
+@property (nonatomic, retain) UIImageView *productImage;
 @end
