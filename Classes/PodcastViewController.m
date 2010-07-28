@@ -89,7 +89,7 @@
         // save values to an item, then store that item into the array... 
         [item setObject:currentTitle forKey:@"title"]; 
         [item setObject:currentLink forKey:@"link"]; 
-        [item setObject:currentSummary forKey:@"description"]; 
+        [item setObject:currentSummary forKey:@"itunes:summary"]; 
         [item setObject:currentDate forKey:@"pubDate"]; 
         [stories addObject:[item copy]]; 
         NSLog(@"adding story: %@", currentTitle); 
@@ -102,7 +102,7 @@
         [currentTitle appendString:string]; 
     } else if ([currentElement isEqualToString:@"link"]) { 
         [currentLink appendString:string]; 
-    } else if ([currentElement isEqualToString:@"description"]) { 
+    } else if ([currentElement isEqualToString:@"itunes:summary"]) { 
         [currentSummary appendString:string]; 
     } else if ([currentElement isEqualToString:@"pubDate"]) { 
         [currentDate appendString:string]; 

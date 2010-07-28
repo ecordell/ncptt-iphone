@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BlogTableViewCell.h"
+#import "TrainingTableViewCell.h"
 
-@interface BlogViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
-    IBOutlet UITableView *blogTableView;
+@interface TrainingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
+    IBOutlet UITableView *trainingTableView;
     UIActivityIndicatorView * activityIndicator; 
     CGSize cellSize; 
     NSXMLParser * rssParser; 
@@ -20,8 +20,6 @@
     NSMutableString * currentTitle, * currentDate, * currentSummary, * currentLink; 
 }
 
-@property (nonatomic, retain) UITableView *blogTableView;
-
-- (NSString *)flattenHTML:(NSString *)html;
+@property (nonatomic, retain) UITableView *trainingTableView;
 
 @end

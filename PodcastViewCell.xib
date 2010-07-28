@@ -64,12 +64,13 @@
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUILabel" id="915677800">
 								<reference key="NSNextResponder" ref="680869921"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 20}, {280, 64}}</string>
+								<string key="NSFrame">{{20, 36}, {280, 48}}</string>
 								<reference key="NSSuperview" ref="680869921"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -85,6 +86,7 @@
 								<reference key="IBUITextColor" ref="109184745"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUINumberOfLines">0</int>
 							</object>
@@ -191,7 +193,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
 					<string>PodcastTableViewCell</string>
-					<string>{{1740, 655}, {320, 91}}</string>
+					<string>{{1863, 649}, {320, 91}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

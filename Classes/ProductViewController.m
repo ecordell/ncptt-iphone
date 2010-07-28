@@ -6,12 +6,12 @@
 //  Copyright NCPTT 2010. All rights reserved.
 //
 
-#import "BlogViewController.h"
+#import "ProductViewController.h"
 
 
-@implementation BlogViewController
+@implementation ProductViewController
 
-@synthesize blogTableView;
+@synthesize productTableView;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -57,10 +57,10 @@
 - (void)viewDidAppear:(BOOL)animated { 
     [super viewDidAppear:animated]; 
     if ([stories count] == 0) { 
-        NSString * path = @"http://www.ncptt.nps.gov/feed/"; 
+        NSString * path = @"http://www.ncptt.nps.gov/category/product-catalog/feed/"; 
         [self parseXMLFileAtURL:path]; 
     } 
-    cellSize = CGSizeMake([blogTableView bounds].size.width, 60); 
+    cellSize = CGSizeMake([productTableView bounds].size.width, 60); 
 }
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
@@ -113,7 +113,7 @@
     [activityIndicator removeFromSuperview]; 
     NSLog(@"all done!"); 
     NSLog(@"stories array has %d items", [stories count]); 
-    [blogTableView reloadData]; 
+    [productTableView reloadData]; 
 }
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -130,51 +130,22 @@
 
 //UITableView Methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { 
-    static NSString *blogCell = @"BlogTableViewCell"; 
-    BlogTableViewCell *cell = (BlogTableViewCell *)[tableView dequeueReusableCellWithIdentifier:blogCell]; 
+    static NSString *blogCell = @"ProductTableViewCell"; 
+    ProductTableViewCell *cell = (ProductTableViewCell *)[tableView dequeueReusableCellWithIdentifier:blogCell]; 
     if (cell == nil) { 
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"BlogViewCell" owner:nil options:nil];
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PodcastViewCell" owner:nil options:nil];
         for (id currentObject in topLevelObjects) {
             if ([currentObject isKindOfClass:[UITableViewCell class]]) {
-                cell = (BlogTableViewCell *) currentObject;
+                cell = (ProductTableViewCell *) currentObject;
                 break;
             }
         }
     } // Set up the cell 
     int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1]; 
     cell.title.text = [[stories objectAtIndex:storyIndex] objectForKey:@"title"];
-    cell.description.text = [self flattenHTML:[[stories objectAtIndex:storyIndex] objectForKey:@"description"]];
-    //load image here later
-    return cell; 
+    cell.description.text = [[stories objectAtIndex:storyIndex] objectForKey:@"description"];
+    return cell;
 }
-
-- (NSString *)flattenHTML:(NSString *)html {
-    
-    NSScanner *theScanner;
-    NSString *text = nil;
-    
-    theScanner = [NSScanner scannerWithString:html];
-    
-    while ([theScanner isAtEnd] == NO) {
-        
-        // find start of tag
-        [theScanner scanUpToString:@"<" intoString:NULL] ; 
-        
-        // find end of tag
-        [theScanner scanUpToString:@">" intoString:&text] ;
-        
-        // replace the found tag with a space
-        //(you can filter multi-spaces out later if you wish)
-        html = [html stringByReplacingOccurrencesOfString:
-                [ NSString stringWithFormat:@"%@>", text]
-                                               withString:@" "];
-        
-    } // while //
-    
-    return html;
-    
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [stories count];
 }
