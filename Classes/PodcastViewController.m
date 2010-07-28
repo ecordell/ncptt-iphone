@@ -130,14 +130,21 @@
 
 //UITableView Methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { 
-    static NSString *blogCell = @"blogCell"; 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:blogCell]; 
+    static NSString *blogCell = @"PodcastTableViewCell"; 
+    PodcastTableViewCell *cell = (PodcastTableViewCell *)[tableView dequeueReusableCellWithIdentifier:blogCell]; 
     if (cell == nil) { 
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:blogCell] autorelease]; 
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PodcastViewCell" owner:nil options:nil];
+        for (id currentObject in topLevelObjects) {
+            if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+                cell = (PodcastTableViewCell *) currentObject;
+                break;
+            }
+        }
     } // Set up the cell 
     int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1]; 
-    [cell.textLabel setText:[[stories objectAtIndex: storyIndex] objectForKey: @"title"]]; 
-    return cell; 
+    cell.title.text = [[stories objectAtIndex:storyIndex] objectForKey:@"title"];
+    cell.description.text = [[stories objectAtIndex:storyIndex] objectForKey:@"itunes:summary"];
+    return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [stories count];

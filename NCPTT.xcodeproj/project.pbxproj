@@ -10,6 +10,10 @@
 		09F852D4120079500023F691 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F852D3120079500023F691 /* Default.png */; };
 		09F853171200817A0023F691 /* NCPTT-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F853161200817A0023F691 /* NCPTT-128.png */; };
 		09F8539612008E890023F691 /* PodcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F8539512008E890023F691 /* PodcastViewController.m */; };
+		09F853B6120091E00023F691 /* BlogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F853B5120091E00023F691 /* BlogTableViewCell.m */; };
+		09F853BA120092C30023F691 /* BlogViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F853B9120092C30023F691 /* BlogViewCell.xib */; };
+		09F853D9120098260023F691 /* PodcastTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F853D8120098260023F691 /* PodcastTableViewCell.m */; };
+		09F853DB120098680023F691 /* PodcastViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F853DA120098680023F691 /* PodcastViewCell.xib */; };
 		1D3623260D0F684500981E51 /* NCPTTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* NCPTTAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -26,6 +30,12 @@
 		09F853161200817A0023F691 /* NCPTT-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NCPTT-128.png"; sourceTree = SOURCE_ROOT; };
 		09F8539412008E890023F691 /* PodcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodcastViewController.h; sourceTree = "<group>"; };
 		09F8539512008E890023F691 /* PodcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PodcastViewController.m; sourceTree = "<group>"; };
+		09F853B4120091E00023F691 /* BlogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogTableViewCell.h; sourceTree = "<group>"; };
+		09F853B5120091E00023F691 /* BlogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogTableViewCell.m; sourceTree = "<group>"; };
+		09F853B9120092C30023F691 /* BlogViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlogViewCell.xib; sourceTree = "<group>"; };
+		09F853D7120098260023F691 /* PodcastTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodcastTableViewCell.h; sourceTree = "<group>"; };
+		09F853D8120098260023F691 /* PodcastTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PodcastTableViewCell.m; sourceTree = "<group>"; };
+		09F853DA120098680023F691 /* PodcastViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastViewCell.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* NCPTTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPTTAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* NCPTTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPTTAppDelegate.m; sourceTree = "<group>"; };
@@ -59,12 +69,16 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				09F853D7120098260023F691 /* PodcastTableViewCell.h */,
+				09F853D8120098260023F691 /* PodcastTableViewCell.m */,
 				09F8539412008E890023F691 /* PodcastViewController.h */,
 				09F8539512008E890023F691 /* PodcastViewController.m */,
 				28216C950DB411BC00E5133A /* BlogViewController.h */,
 				28216C960DB411BC00E5133A /* BlogViewController.m */,
 				1D3623240D0F684500981E51 /* NCPTTAppDelegate.h */,
 				1D3623250D0F684500981E51 /* NCPTTAppDelegate.m */,
+				09F853B4120091E00023F691 /* BlogTableViewCell.h */,
+				09F853B5120091E00023F691 /* BlogTableViewCell.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -112,10 +126,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				09F853DA120098680023F691 /* PodcastViewCell.xib */,
 				2840D7CD1179279E00D7F93C /* FirstView.xib */,
 				282CCBFD0DB6C98000C4EA27 /* SecondView.xib */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* NCPTT-Info.plist */,
+				09F853B9120092C30023F691 /* BlogViewCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -177,6 +193,8 @@
 				2840D7CE1179279E00D7F93C /* FirstView.xib in Resources */,
 				09F852D4120079500023F691 /* Default.png in Resources */,
 				09F853171200817A0023F691 /* NCPTT-128.png in Resources */,
+				09F853BA120092C30023F691 /* BlogViewCell.xib in Resources */,
+				09F853DB120098680023F691 /* PodcastViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +209,8 @@
 				1D3623260D0F684500981E51 /* NCPTTAppDelegate.m in Sources */,
 				28216C970DB411BC00E5133A /* BlogViewController.m in Sources */,
 				09F8539612008E890023F691 /* PodcastViewController.m in Sources */,
+				09F853B6120091E00023F691 /* BlogTableViewCell.m in Sources */,
+				09F853D9120098260023F691 /* PodcastTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
