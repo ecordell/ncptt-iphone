@@ -12,6 +12,10 @@
 		09B41D531201D21900D2D0AE /* icon_mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B41D4E1201D21900D2D0AE /* icon_mic.png */; };
 		09B41D541201D21900D2D0AE /* icon_shopping_bag.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B41D4F1201D21900D2D0AE /* icon_shopping_bag.png */; };
 		09B41D551201D21900D2D0AE /* ncptt-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B41D501201D21900D2D0AE /* ncptt-32x32.png */; };
+		09B41D641201D4A600D2D0AE /* PodcastDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B41D631201D4A600D2D0AE /* PodcastDetailViewController.m */; };
+		09B41D661201D4C100D2D0AE /* PodcastDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B41D651201D4C100D2D0AE /* PodcastDetailView.xib */; };
+		09B41DC21201E3B100D2D0AE /* ProductItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B41DC11201E3B100D2D0AE /* ProductItemViewController.m */; };
+		09B41DC41201E3C200D2D0AE /* ProductItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B41DC31201E3C200D2D0AE /* ProductItemView.xib */; };
 		09F852D4120079500023F691 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F852D3120079500023F691 /* Default.png */; };
 		09F853171200817A0023F691 /* NCPTT-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F853161200817A0023F691 /* NCPTT-128.png */; };
 		09F8539612008E890023F691 /* PodcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F8539512008E890023F691 /* PodcastViewController.m */; };
@@ -43,6 +47,12 @@
 		09B41D4E1201D21900D2D0AE /* icon_mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_mic.png; sourceTree = SOURCE_ROOT; };
 		09B41D4F1201D21900D2D0AE /* icon_shopping_bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_shopping_bag.png; sourceTree = SOURCE_ROOT; };
 		09B41D501201D21900D2D0AE /* ncptt-32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ncptt-32x32.png"; sourceTree = SOURCE_ROOT; };
+		09B41D621201D4A600D2D0AE /* PodcastDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodcastDetailViewController.h; sourceTree = "<group>"; };
+		09B41D631201D4A600D2D0AE /* PodcastDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PodcastDetailViewController.m; sourceTree = "<group>"; };
+		09B41D651201D4C100D2D0AE /* PodcastDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastDetailView.xib; sourceTree = "<group>"; };
+		09B41DC01201E3B100D2D0AE /* ProductItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductItemViewController.h; sourceTree = "<group>"; };
+		09B41DC11201E3B100D2D0AE /* ProductItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductItemViewController.m; sourceTree = "<group>"; };
+		09B41DC31201E3C200D2D0AE /* ProductItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemView.xib; sourceTree = "<group>"; };
 		09F852D3120079500023F691 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		09F853161200817A0023F691 /* NCPTT-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NCPTT-128.png"; sourceTree = SOURCE_ROOT; };
 		09F8539412008E890023F691 /* PodcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodcastViewController.h; sourceTree = "<group>"; };
@@ -99,30 +109,74 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				09F854D71200BCA10023F691 /* TrainingTableViewCell.h */,
-				09F854D81200BCA10023F691 /* TrainingTableViewCell.m */,
-				09F854D91200BCA10023F691 /* TrainingViewController.h */,
-				09F854DA1200BCA10023F691 /* TrainingViewController.m */,
-				09F854A51200B9070023F691 /* ProductTableViewCell.h */,
-				09F854A61200B9070023F691 /* ProductTableViewCell.m */,
-				09F854A71200B9070023F691 /* ProductViewController.h */,
-				09F854A81200B9070023F691 /* ProductViewController.m */,
-				09F853D7120098260023F691 /* PodcastTableViewCell.h */,
-				09F853D8120098260023F691 /* PodcastTableViewCell.m */,
-				09F8539412008E890023F691 /* PodcastViewController.h */,
-				09F8539512008E890023F691 /* PodcastViewController.m */,
-				09F8548E1200B0AF0023F691 /* AboutViewController.h */,
-				09F8548F1200B0AF0023F691 /* AboutViewController.m */,
-				28216C950DB411BC00E5133A /* BlogViewController.h */,
-				28216C960DB411BC00E5133A /* BlogViewController.m */,
+				09B41DCF1201E4B400D2D0AE /* Blog */,
+				09B41DD01201E4E700D2D0AE /* Podcasts */,
+				09B41DD11201E50C00D2D0AE /* Products */,
+				09B41DD21201E52200D2D0AE /* Training */,
+				09B41DD31201E52F00D2D0AE /* About */,
 				1D3623240D0F684500981E51 /* NCPTTAppDelegate.h */,
 				1D3623250D0F684500981E51 /* NCPTTAppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		09B41DCF1201E4B400D2D0AE /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				28216C950DB411BC00E5133A /* BlogViewController.h */,
+				28216C960DB411BC00E5133A /* BlogViewController.m */,
 				09F853B4120091E00023F691 /* BlogTableViewCell.h */,
 				09F853B5120091E00023F691 /* BlogTableViewCell.m */,
 				09F855B01200DAE80023F691 /* BlogEntryViewController.h */,
 				09F855B11200DAE80023F691 /* BlogEntryViewController.m */,
 			);
-			path = Classes;
+			name = Blog;
+			sourceTree = "<group>";
+		};
+		09B41DD01201E4E700D2D0AE /* Podcasts */ = {
+			isa = PBXGroup;
+			children = (
+				09B41D621201D4A600D2D0AE /* PodcastDetailViewController.h */,
+				09B41D631201D4A600D2D0AE /* PodcastDetailViewController.m */,
+				09F853D7120098260023F691 /* PodcastTableViewCell.h */,
+				09F853D8120098260023F691 /* PodcastTableViewCell.m */,
+				09F8539412008E890023F691 /* PodcastViewController.h */,
+				09F8539512008E890023F691 /* PodcastViewController.m */,
+			);
+			name = Podcasts;
+			sourceTree = "<group>";
+		};
+		09B41DD11201E50C00D2D0AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09B41DC01201E3B100D2D0AE /* ProductItemViewController.h */,
+				09B41DC11201E3B100D2D0AE /* ProductItemViewController.m */,
+				09F854A51200B9070023F691 /* ProductTableViewCell.h */,
+				09F854A61200B9070023F691 /* ProductTableViewCell.m */,
+				09F854A71200B9070023F691 /* ProductViewController.h */,
+				09F854A81200B9070023F691 /* ProductViewController.m */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		09B41DD21201E52200D2D0AE /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				09F854D81200BCA10023F691 /* TrainingTableViewCell.m */,
+				09F854D91200BCA10023F691 /* TrainingViewController.h */,
+				09F854DA1200BCA10023F691 /* TrainingViewController.m */,
+				09F854D71200BCA10023F691 /* TrainingTableViewCell.h */,
+			);
+			name = Training;
+			sourceTree = "<group>";
+		};
+		09B41DD31201E52F00D2D0AE /* About */ = {
+			isa = PBXGroup;
+			children = (
+				09F8548F1200B0AF0023F691 /* AboutViewController.m */,
+				09F8548E1200B0AF0023F691 /* AboutViewController.h */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 		09F852D21200793A0023F691 /* Images */ = {
@@ -173,6 +227,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				09B41DC31201E3C200D2D0AE /* ProductItemView.xib */,
+				09B41D651201D4C100D2D0AE /* PodcastDetailView.xib */,
 				09F854DD1200BCAC0023F691 /* TrainingViewCell.xib */,
 				09F854A31200B8F70023F691 /* ProductViewCell.xib */,
 				09F853DA120098680023F691 /* PodcastViewCell.xib */,
@@ -249,6 +305,8 @@
 				09B41D531201D21900D2D0AE /* icon_mic.png in Resources */,
 				09B41D541201D21900D2D0AE /* icon_shopping_bag.png in Resources */,
 				09B41D551201D21900D2D0AE /* ncptt-32x32.png in Resources */,
+				09B41D661201D4C100D2D0AE /* PodcastDetailView.xib in Resources */,
+				09B41DC41201E3C200D2D0AE /* ProductItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +329,8 @@
 				09F854DB1200BCA10023F691 /* TrainingTableViewCell.m in Sources */,
 				09F854DC1200BCA10023F691 /* TrainingViewController.m in Sources */,
 				09F855B21200DAE80023F691 /* BlogEntryViewController.m in Sources */,
+				09B41D641201D4A600D2D0AE /* PodcastDetailViewController.m in Sources */,
+				09B41DC21201E3B100D2D0AE /* ProductItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@
 
 @implementation PodcastViewController
 
-@synthesize podcastTableView, subscribeButton, rateButton;
+@synthesize podcastTableView, subscribeButton, rateButton, detailController;
 
 -(IBAction)subscribeButtonClicked {
     
@@ -88,7 +88,12 @@
         currentDate = [[NSMutableString alloc] init]; 
         currentDescription = [[NSMutableString alloc] init]; 
         currentLength = [[NSMutableString alloc] init]; 
-    } 
+        currentUrl = [[NSMutableString alloc] init];
+    }
+    else if ([elementName isEqualToString:@"enclosure"]){
+        currentUrl = [attributeDict objectForKey:@"url"];
+        NSLog(@"%@", currentUrl);
+    }
 } 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{ 
     //NSLog(@"ended element: %@", elementName); 
@@ -98,6 +103,7 @@
         [item setObject:currentDate forKey:@"pubDate"]; 
         [item setObject:currentDescription forKey:@"itunes:summary"]; 
         [item setObject:currentLength forKey:@"itunes:duration"]; 
+        [item setObject:currentUrl forKey:@"url"];
         [stories addObject:[item copy]]; 
         NSLog(@"adding story: %@", currentTitle); 
     } 
@@ -113,6 +119,8 @@
         [currentDescription appendString:string]; 
     } else if ([currentElement isEqualToString:@"pubDate"]) { 
         [currentDate appendString:string]; 
+    } else if ([currentElement isEqualToString:@"url"]) { 
+        [currentUrl appendString:string];
     } 
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser { 
@@ -158,6 +166,17 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [stories count];
 }
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    
+    int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1];
+    if (detailController == nil) {
+        self.detailController = [[PodcastDetailViewController alloc] initWithNibName:@"PodcastDetailView" bundle:[NSBundle mainBundle]];
+    }
+    detailController.url = [[stories objectAtIndex:storyIndex] objectForKey:@"url"];
+    [self.view addSubview:[detailController view]];
+    [detailController loadUrl];
+}
+
 - (void)dealloc {
     [currentElement release]; 
     [rssParser release]; 

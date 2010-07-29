@@ -11,7 +11,7 @@
 
 @implementation ProductViewController
 
-@synthesize productTableView;
+@synthesize productTableView, itemController;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -79,6 +79,7 @@
         item = [[NSMutableDictionary alloc] init]; 
         currentTitle = [[NSMutableString alloc] init]; 
         currentDescription = [[NSMutableString alloc] init]; 
+        currentLink = [[NSMutableString alloc] init];
     } 
 } 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{ 
@@ -87,6 +88,7 @@
         // save values to an item, then store that item into the array... 
         [item setObject:currentTitle forKey:@"title"]; 
         [item setObject:currentDescription forKey:@"description"]; 
+        [item setObject:currentLink forKey:@"link"];
         [stories addObject:[item copy]]; 
         NSLog(@"adding story: %@", currentTitle); 
     } 
@@ -98,6 +100,8 @@
         [currentTitle appendString:string]; 
     } else if ([currentElement isEqualToString:@"description"]) { 
         [currentDescription appendString:string]; 
+    } else if ([currentElement isEqualToString:@"link"]) { 
+        [currentLink appendString:string]; 
     } 
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser { 
@@ -140,6 +144,16 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [stories count];
+}
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    
+    int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1];
+    if (itemController == nil) {
+        self.itemController = [[ProductItemViewController alloc] initWithNibName:@"ProductItemView" bundle:[NSBundle mainBundle]];
+    }
+    itemController.url = [[stories objectAtIndex:storyIndex] objectForKey:@"link"];
+    [self.view addSubview:[itemController view]];
+    [itemController loadUrl];
 }
 - (void)dealloc {
     [currentElement release]; 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PodcastTableViewCell.h"
+#import "PodcastDetailViewController.h"
 
 @interface PodcastViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
     IBOutlet UITableView *podcastTableView;
@@ -20,12 +21,14 @@
     NSMutableArray * stories; 
     NSMutableDictionary * item;
     NSString * currentElement; 
-    NSMutableString * currentTitle, * currentDate, * currentDescription, * currentLength; 
+    NSMutableString * currentTitle, * currentDate, * currentDescription, * currentLength, * currentUrl; 
+    PodcastDetailViewController * detailController;
 }
 
 @property (nonatomic, retain) UITableView *podcastTableView;
 @property (nonatomic, retain) UIButton *subscribeButton;
 @property (nonatomic, retain) UIButton *rateButton;
+@property (nonatomic, retain) PodcastDetailViewController * detailController;
 
 -(IBAction)subscribeButtonClicked;
 -(IBAction)rateButtonClicked;

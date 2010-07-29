@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductTableViewCell.h"
+#import "ProductItemViewController.h"
 
 @interface ProductViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
     IBOutlet UITableView *productTableView;
@@ -17,9 +18,11 @@
     NSMutableArray * stories; 
     NSMutableDictionary * item;
     NSString * currentElement; 
-    NSMutableString * currentTitle, * currentDescription; 
+    NSMutableString * currentTitle, * currentDescription, * currentLink; 
+    ProductItemViewController *itemController;
 }
 
 @property (nonatomic, retain) UITableView *productTableView;
+@property (nonatomic, retain) ProductItemViewController *itemController;
 
 @end
