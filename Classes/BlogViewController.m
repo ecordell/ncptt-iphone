@@ -191,10 +191,11 @@
         self.entryController = [[BlogEntryViewController alloc] initWithNibName:@"BlogEntryView" bundle:[NSBundle mainBundle]];
     }
     entryController.url = [[stories objectAtIndex:storyIndex] objectForKey:@"link"];
-    NSLog(@"%@", entryController.url);
     [self.view addSubview:[entryController view]];
+    [entryController loadUrl];
 }
 - (void)dealloc {
+    [entryController release];
     [currentElement release]; 
     [rssParser release]; 
     [stories release]; 

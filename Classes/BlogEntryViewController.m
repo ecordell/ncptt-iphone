@@ -10,14 +10,13 @@
 
 
 @implementation BlogEntryViewController
-@synthesize webview, url;
+@synthesize webview, url, closeButton;
 
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
-       
     }
     return self;
 }
@@ -32,22 +31,26 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    NSLog(@"%@", self.url);
+    [super viewDidLoad];    
+    [self.webview setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+}
+
+- (IBAction)goBackToList {
+    [self.view removeFromSuperview];
+}
+
+- (void)loadUrl {
     //Create a URL object.
-    NSURL *urlObj = [NSURL URLWithString:self.url];
+    NSURL *urlObj = [NSURL URLWithString:[[self.url stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     //URL Requst Object
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:urlObj];
     
+    self.webview.scalesPageToFit = YES;
+    
     //Load the request in the UIWebView.
     [self.webview loadRequest:requestObj];
-    
-    [webview setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-    
-    
 }
-
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -72,6 +75,9 @@
 
 
 - (void)dealloc {
+    [closeButton release];
+    [webview release];
+    [url release];
     [super dealloc];
 }
 
