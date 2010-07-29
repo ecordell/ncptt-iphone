@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		096A73D8120235F20069451E /* TrainingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096A73D7120235F20069451E /* TrainingDetailViewController.m */; };
+		096A73EA120238240069451E /* TrainingDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 096A73E9120238240069451E /* TrainingDetailView.xib */; };
 		09B41D511201D21900D2D0AE /* icon_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B41D4C1201D21900D2D0AE /* icon_book.png */; };
 		09B41D521201D21900D2D0AE /* icon_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B41D4D1201D21900D2D0AE /* icon_calendar.png */; };
 		09B41D531201D21900D2D0AE /* icon_mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B41D4E1201D21900D2D0AE /* icon_mic.png */; };
@@ -43,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		096A73D6120235F20069451E /* TrainingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingDetailViewController.h; sourceTree = "<group>"; };
+		096A73D7120235F20069451E /* TrainingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingDetailViewController.m; sourceTree = "<group>"; };
+		096A73E9120238240069451E /* TrainingDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainingDetailView.xib; sourceTree = "<group>"; };
 		09B41D4C1201D21900D2D0AE /* icon_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_book.png; sourceTree = SOURCE_ROOT; };
 		09B41D4D1201D21900D2D0AE /* icon_calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_calendar.png; sourceTree = SOURCE_ROOT; };
 		09B41D4E1201D21900D2D0AE /* icon_mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_mic.png; sourceTree = SOURCE_ROOT; };
@@ -167,6 +172,8 @@
 		09B41DD21201E52200D2D0AE /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				096A73D6120235F20069451E /* TrainingDetailViewController.h */,
+				096A73D7120235F20069451E /* TrainingDetailViewController.m */,
 				09F854D81200BCA10023F691 /* TrainingTableViewCell.m */,
 				09F854D91200BCA10023F691 /* TrainingViewController.h */,
 				09F854DA1200BCA10023F691 /* TrainingViewController.m */,
@@ -232,6 +239,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				096A73E9120238240069451E /* TrainingDetailView.xib */,
 				09B41DC31201E3C200D2D0AE /* ProductItemView.xib */,
 				09B41D651201D4C100D2D0AE /* PodcastDetailView.xib */,
 				09F854DD1200BCAC0023F691 /* TrainingViewCell.xib */,
@@ -312,6 +320,7 @@
 				09B41D551201D21900D2D0AE /* ncptt-32x32.png in Resources */,
 				09B41D661201D4C100D2D0AE /* PodcastDetailView.xib in Resources */,
 				09B41DC41201E3C200D2D0AE /* ProductItemView.xib in Resources */,
+				096A73EA120238240069451E /* TrainingDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +346,7 @@
 				09B41D641201D4A600D2D0AE /* PodcastDetailViewController.m in Sources */,
 				09B41DC21201E3B100D2D0AE /* ProductItemViewController.m in Sources */,
 				09B41E231201FC0400D2D0AE /* MainTabBarController.m in Sources */,
+				096A73D8120235F20069451E /* TrainingDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

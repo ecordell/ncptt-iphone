@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TrainingTableViewCell.h"
+#import "TrainingDetailViewController.h"
 
 @interface TrainingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
     IBOutlet UITableView *trainingTableView;
@@ -18,8 +19,10 @@
     NSMutableDictionary * item;
     NSString * currentElement; 
     NSMutableString * currentTitle, * currentDate, * currentSummary, * currentLink; 
+    TrainingDetailViewController *detailController;
 }
 
 @property (nonatomic, retain) UITableView *trainingTableView;
-
+@property (nonatomic, retain) TrainingDetailViewController *detailController;
+- (NSString *)flattenHTML:(NSString *)html;
 @end

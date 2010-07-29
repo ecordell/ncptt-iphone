@@ -11,7 +11,7 @@
 
 @implementation TrainingViewController
 
-@synthesize trainingTableView;
+@synthesize trainingTableView, detailController;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -57,7 +57,7 @@
 - (void)viewDidAppear:(BOOL)animated { 
     [super viewDidAppear:animated]; 
     if ([stories count] == 0) { 
-        NSString * path = @"http://www.ncptt.nps.gov/category/product-catalog/feed/"; 
+        NSString * path = @"http://www.ncptt.nps.gov/category/training/feed/"; 
         [self parseXMLFileAtURL:path]; 
     } 
     cellSize = CGSizeMake([trainingTableView bounds].size.width, 60); 
@@ -126,12 +126,37 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
+- (NSString *)flattenHTML:(NSString *)html {
+    
+    NSScanner *theScanner;
+    NSString *text = nil;
+    
+    theScanner = [NSScanner scannerWithString:html];
+    
+    while ([theScanner isAtEnd] == NO) {
+        
+        // find start of tag
+        [theScanner scanUpToString:@"<" intoString:NULL] ; 
+        
+        // find end of tag
+        [theScanner scanUpToString:@">" intoString:&text] ;
+        
+        // replace the found tag with a space
+        //(you can filter multi-spaces out later if you wish)
+        html = [html stringByReplacingOccurrencesOfString:
+                [ NSString stringWithFormat:@"%@>", text]
+                                               withString:@" "];
+        
+    } // while //
+    
+    return html;
+    
+}
 
 //UITableView Methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { 
-    static NSString *blogCell = @"TrainingTableViewCell"; 
-    TrainingTableViewCell *cell = (TrainingTableViewCell *)[tableView dequeueReusableCellWithIdentifier:blogCell]; 
+    static NSString *trainingCell = @"TrainingTableViewCell"; 
+    TrainingTableViewCell *cell = (TrainingTableViewCell *)[tableView dequeueReusableCellWithIdentifier:trainingCell]; 
     if (cell == nil) { 
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"TrainingViewCell" owner:nil options:nil];
         for (id currentObject in topLevelObjects) {
@@ -143,11 +168,37 @@
     } // Set up the cell 
     int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1]; 
     cell.title.text = [[stories objectAtIndex:storyIndex] objectForKey:@"title"];
-    cell.description.text = [[stories objectAtIndex:storyIndex] objectForKey:@"description"];
+    cell.description.text = [self flattenHTML:[[stories objectAtIndex:storyIndex] objectForKey:@"description"]];
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [stories count];
+}
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    
+    int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1];
+    if (detailController == nil) {
+        self.detailController = [[TrainingDetailViewController alloc] initWithNibName:@"TrainingDetailView" bundle:[NSBundle mainBundle]];
+    }
+    detailController.url = [[stories objectAtIndex:storyIndex] objectForKey:@"link"]; 
+    if((self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)||(self.interfaceOrientation == UIInterfaceOrientationLandscapeRight))
+    {
+        CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+        CGRect newFrame =  CGRectMake(0.0, 0.0, applicationFrame.size.height, applicationFrame.size.width);
+        [detailController.view setFrame:newFrame];
+    } else {
+        CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+        CGRect newFrame =  CGRectMake(0.0, 0.0, applicationFrame.size.width, applicationFrame.size.height);
+        [detailController.view setFrame:newFrame];
+    }
+    
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:detailController.view cache:NO];
+    [self.view addSubview:[detailController view]];
+    [detailController loadUrl];
+    [UIView commitAnimations];
 }
 - (void)dealloc {
     [currentElement release]; 

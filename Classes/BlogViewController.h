@@ -18,7 +18,7 @@
     NSMutableArray * stories; 
     NSMutableDictionary * item;
     NSString * currentElement; 
-    NSMutableString * currentTitle, * currentDate, * currentDescription, * currentCreator, * currentUrl;
+    NSMutableString * currentTitle, * currentDate, * currentDescription, * currentCreator, * currentUrl, *currentImage;
     BlogEntryViewController *entryController;
 }
 

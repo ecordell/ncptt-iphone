@@ -82,6 +82,7 @@
         currentDescription = [[NSMutableString alloc] init]; 
         currentCreator = [[NSMutableString alloc] init]; 
         currentUrl = [[NSMutableString alloc] init];
+        currentImage = [[NSMutableString alloc] init];
     } 
 } 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{ 
@@ -93,6 +94,7 @@
         [item setObject:currentDescription forKey:@"description"]; 
         [item setObject:currentDate forKey:@"pubDate"]; 
         [item setObject:currentUrl forKey:@"link"];
+        [item setObject:currentImage forKey:@"image"];
         [stories addObject:[item copy]]; 
         NSLog(@"adding story: %@", currentTitle); 
     } 
@@ -110,6 +112,8 @@
         [currentDate appendString:string]; 
     } else if ([currentElement isEqualToString:@"link"]) { 
         [currentUrl appendString:string]; 
+    } else if ([currentElement isEqualToString:@"image"]) { 
+        [currentImage appendString:string]; 
     } 
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser { 
@@ -150,7 +154,7 @@
     cell.description.text = [self flattenHTML:[[stories objectAtIndex:storyIndex] objectForKey:@"description"]];
     cell.date.text = [[[stories objectAtIndex:storyIndex] objectForKey:@"pubDate"] substringToIndex:16];
     cell.creator.text = [[stories objectAtIndex:storyIndex] objectForKey:@"dc:creator"];
-    //load image here later
+    //cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cvcl.mit.edu/hybrid/cat2.jpg"]]];
     return cell; 
 }
 
