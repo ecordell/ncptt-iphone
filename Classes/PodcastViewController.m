@@ -14,12 +14,13 @@
 @synthesize podcastTableView, subscribeButton, rateButton, detailController;
 
 -(IBAction)subscribeButtonClicked {
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=285727030"]];
 }
 
 -(IBAction)rateButtonClicked {
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=285727030"]];
 }
+
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -173,8 +174,12 @@
         self.detailController = [[PodcastDetailViewController alloc] initWithNibName:@"PodcastDetailView" bundle:[NSBundle mainBundle]];
     }
     detailController.url = [[stories objectAtIndex:storyIndex] objectForKey:@"url"];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:detailController.view cache:YES];
     [self.view addSubview:[detailController view]];
     [detailController loadUrl];
+    [UIView commitAnimations];
 }
 
 - (void)dealloc {

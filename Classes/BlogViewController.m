@@ -36,13 +36,13 @@
 }
 */
 
-/*
+
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (YES);
 }
-*/
+
 - (void)parseXMLFileAtURL:(NSString *)URL { 
     stories = [[NSMutableArray alloc] init]; //you must then convert the path to a proper NSURL or it won't work
     NSURL *xmlURL = [NSURL URLWithString:URL]; // here, for some reason you have to use NSClassFromString when trying to alloc NSXMLParser, otherwise you will get an object not found error 
@@ -190,9 +190,25 @@
     if (entryController == nil) {
         self.entryController = [[BlogEntryViewController alloc] initWithNibName:@"BlogEntryView" bundle:[NSBundle mainBundle]];
     }
-    entryController.url = [[stories objectAtIndex:storyIndex] objectForKey:@"link"];
+    entryController.url = [[stories objectAtIndex:storyIndex] objectForKey:@"link"]; 
+    if((self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)||(self.interfaceOrientation == UIInterfaceOrientationLandscapeRight))
+    {
+        CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+        CGRect newFrame =  CGRectMake(0.0, 0.0, applicationFrame.size.height, applicationFrame.size.width);
+        [entryController.view setFrame:newFrame];
+    } else {
+        CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+        CGRect newFrame =  CGRectMake(0.0, 0.0, applicationFrame.size.width, applicationFrame.size.height);
+        [entryController.view setFrame:newFrame];
+    }
+
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:entryController.view cache:NO];
     [self.view addSubview:[entryController view]];
     [entryController loadUrl];
+    [UIView commitAnimations];
 }
 - (void)dealloc {
     [entryController release];

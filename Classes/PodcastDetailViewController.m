@@ -36,7 +36,11 @@
 }
 
 - (IBAction)goBackToList {
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view.superview cache:YES];
     [self.view removeFromSuperview];
+    [UIView commitAnimations];
 }
 
 - (void)loadUrl {
@@ -52,13 +56,13 @@
     [self.webview loadRequest:requestObj];
 }
 
-/*
+
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
-*/
+
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

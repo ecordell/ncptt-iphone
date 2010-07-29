@@ -16,6 +16,7 @@
 		09B41D661201D4C100D2D0AE /* PodcastDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B41D651201D4C100D2D0AE /* PodcastDetailView.xib */; };
 		09B41DC21201E3B100D2D0AE /* ProductItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B41DC11201E3B100D2D0AE /* ProductItemViewController.m */; };
 		09B41DC41201E3C200D2D0AE /* ProductItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B41DC31201E3C200D2D0AE /* ProductItemView.xib */; };
+		09B41E231201FC0400D2D0AE /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B41E221201FC0400D2D0AE /* MainTabBarController.m */; };
 		09F852D4120079500023F691 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F852D3120079500023F691 /* Default.png */; };
 		09F853171200817A0023F691 /* NCPTT-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F853161200817A0023F691 /* NCPTT-128.png */; };
 		09F8539612008E890023F691 /* PodcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F8539512008E890023F691 /* PodcastViewController.m */; };
@@ -53,6 +54,8 @@
 		09B41DC01201E3B100D2D0AE /* ProductItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductItemViewController.h; sourceTree = "<group>"; };
 		09B41DC11201E3B100D2D0AE /* ProductItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductItemViewController.m; sourceTree = "<group>"; };
 		09B41DC31201E3C200D2D0AE /* ProductItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemView.xib; sourceTree = "<group>"; };
+		09B41E211201FC0400D2D0AE /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		09B41E221201FC0400D2D0AE /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		09F852D3120079500023F691 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		09F853161200817A0023F691 /* NCPTT-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NCPTT-128.png"; sourceTree = SOURCE_ROOT; };
 		09F8539412008E890023F691 /* PodcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodcastViewController.h; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 				09B41DD31201E52F00D2D0AE /* About */,
 				1D3623240D0F684500981E51 /* NCPTTAppDelegate.h */,
 				1D3623250D0F684500981E51 /* NCPTTAppDelegate.m */,
+				09B41E211201FC0400D2D0AE /* MainTabBarController.h */,
+				09B41E221201FC0400D2D0AE /* MainTabBarController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				09F855B21200DAE80023F691 /* BlogEntryViewController.m in Sources */,
 				09B41D641201D4A600D2D0AE /* PodcastDetailViewController.m in Sources */,
 				09B41DC21201E3B100D2D0AE /* ProductItemViewController.m in Sources */,
+				09B41E231201FC0400D2D0AE /* MainTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

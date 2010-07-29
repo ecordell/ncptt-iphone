@@ -49,7 +49,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUILabel" id="177442682">
 								<reference key="NSNextResponder" ref="680869921"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">290</int>
 								<string key="NSFrame">{{20, 0}, {280, 21}}</string>
 								<reference key="NSSuperview" ref="680869921"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -74,7 +74,7 @@
 							</object>
 							<object class="IBUILabel" id="915677800">
 								<reference key="NSNextResponder" ref="680869921"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{20, 20}, {280, 48}}</string>
 								<reference key="NSSuperview" ref="680869921"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -97,7 +97,7 @@
 							</object>
 							<object class="IBUILabel" id="104061592">
 								<reference key="NSNextResponder" ref="680869921"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{20, 68}, {118, 16}}</string>
 								<reference key="NSSuperview" ref="680869921"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -119,7 +119,7 @@
 							</object>
 							<object class="IBUILabel" id="431791087">
 								<reference key="NSNextResponder" ref="680869921"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">265</int>
 								<string key="NSFrame">{{224, 69}, {76, 15}}</string>
 								<reference key="NSSuperview" ref="680869921"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -273,7 +273,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>PodcastTableViewCell</string>
-					<string>{{1942, 656}, {320, 91}}</string>
+					<string>{{1867, 620}, {320, 91}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

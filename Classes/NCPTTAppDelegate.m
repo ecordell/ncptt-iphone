@@ -23,6 +23,7 @@
     // Override point for customization after application launch.
 
     // Add the tab bar controller's view to the window and display.
+    [tabBarController shouldAutorotateToInterfaceOrientation:YES];
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
 

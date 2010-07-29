@@ -152,8 +152,12 @@
         self.itemController = [[ProductItemViewController alloc] initWithNibName:@"ProductItemView" bundle:[NSBundle mainBundle]];
     }
     itemController.url = [[stories objectAtIndex:storyIndex] objectForKey:@"link"];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:itemController.view cache:YES];
     [self.view addSubview:[itemController view]];
     [itemController loadUrl];
+    [UIView commitAnimations];
 }
 - (void)dealloc {
     [currentElement release]; 
