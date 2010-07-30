@@ -91,7 +91,7 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{ 
     //NSLog(@"ended element: %@", elementName); 
     if ([elementName isEqualToString:@"item"]) { 
-        currentImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://images.neopets.com/items/scarypet_fat_cat.gif"]]];
+        currentImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.ncptt.nps.gov/wp-content/themes/ncptt-remix/thumb.php?src=http://www.ncptt.nps.gov/wp-content/uploads/ncptt-logo-large.png&h=80&w=80&zc=1&q=95"]]];
         // save values to an item, then store that item into the array... 
         [item setObject:currentTitle forKey:@"title"]; 
         [item setObject:currentCreator forKey:@"dc:creator"]; 
