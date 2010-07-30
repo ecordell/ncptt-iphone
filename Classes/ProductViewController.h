@@ -18,7 +18,8 @@
     NSMutableArray * stories; 
     NSMutableDictionary * item;
     NSString * currentElement; 
-    NSMutableString * currentTitle, * currentDescription, * currentLink; 
+    NSMutableString * currentTitle, * currentDescription, * currentLink, *currentImageUrl; 
+    UIImage *currentImage;
     ProductItemViewController *itemController;
 }
 

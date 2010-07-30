@@ -44,6 +44,7 @@
 }
 */
 - (void)parseXMLFileAtURL:(NSString *)URL { 
+    NSAutoreleasePool *apool = [[NSAutoreleasePool alloc] init];
     stories = [[NSMutableArray alloc] init]; //you must then convert the path to a proper NSURL or it won't work
     NSURL *xmlURL = [NSURL URLWithString:URL]; // here, for some reason you have to use NSClassFromString when trying to alloc NSXMLParser, otherwise you will get an object not found error 
     // this may be necessary only for the toolchain 
@@ -53,12 +54,13 @@
     [rssParser setShouldReportNamespacePrefixes:NO]; 
     [rssParser setShouldResolveExternalEntities:NO]; 
     [rssParser parse]; 
+    [apool release];
 }
 - (void)viewDidAppear:(BOOL)animated { 
     [super viewDidAppear:animated]; 
     if ([stories count] == 0) { 
         NSString * path = @"http://www.ncptt.nps.gov/category/product-catalog/feed/"; 
-        [self parseXMLFileAtURL:path]; 
+        [self performSelectorInBackground:@selector(parseXMLFileAtURL:) withObject:path]; 
     } 
     cellSize = CGSizeMake([productTableView bounds].size.width, 60); 
 }
@@ -80,15 +82,19 @@
         currentTitle = [[NSMutableString alloc] init]; 
         currentDescription = [[NSMutableString alloc] init]; 
         currentLink = [[NSMutableString alloc] init];
+        currentImageUrl = [[NSMutableString alloc] init];
+        currentImage = [[UIImage alloc] init];
     } 
 } 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{ 
     //NSLog(@"ended element: %@", elementName); 
     if ([elementName isEqualToString:@"item"]) { 
+        currentImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://images.neopets.com/items/scarypet_fat_cat.gif"]]];
         // save values to an item, then store that item into the array... 
         [item setObject:currentTitle forKey:@"title"]; 
         [item setObject:currentDescription forKey:@"description"]; 
         [item setObject:currentLink forKey:@"link"];
+        [item setObject:currentImage forKey:@"image"];
         [stories addObject:[item copy]]; 
         NSLog(@"adding story: %@", currentTitle); 
     } 
@@ -102,7 +108,9 @@
         [currentDescription appendString:string]; 
     } else if ([currentElement isEqualToString:@"link"]) { 
         [currentLink appendString:string]; 
-    } 
+    } else if ([currentElement isEqualToString:@"image"]) {
+        [currentImageUrl appendString:string];
+    }
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser { 
     [activityIndicator stopAnimating]; 
@@ -140,6 +148,7 @@
     int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1]; 
     cell.title.text = [[stories objectAtIndex:storyIndex] objectForKey:@"title"];
     cell.description.text = [[stories objectAtIndex:storyIndex] objectForKey:@"description"];
+    cell.imageView.image = [[stories objectAtIndex:storyIndex] objectForKey:@"image"];
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

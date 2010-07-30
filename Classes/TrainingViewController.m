@@ -44,6 +44,7 @@
 }
 */
 - (void)parseXMLFileAtURL:(NSString *)URL { 
+    NSAutoreleasePool *apool = [[NSAutoreleasePool alloc] init];
     stories = [[NSMutableArray alloc] init]; //you must then convert the path to a proper NSURL or it won't work
     NSURL *xmlURL = [NSURL URLWithString:URL]; // here, for some reason you have to use NSClassFromString when trying to alloc NSXMLParser, otherwise you will get an object not found error 
     // this may be necessary only for the toolchain 
@@ -53,12 +54,13 @@
     [rssParser setShouldReportNamespacePrefixes:NO]; 
     [rssParser setShouldResolveExternalEntities:NO]; 
     [rssParser parse]; 
+    [apool release];
 }
 - (void)viewDidAppear:(BOOL)animated { 
     [super viewDidAppear:animated]; 
     if ([stories count] == 0) { 
         NSString * path = @"http://www.ncptt.nps.gov/category/training/feed/"; 
-        [self parseXMLFileAtURL:path]; 
+        [self performSelectorInBackground:@selector(parseXMLFileAtURL:) withObject:path];  
     } 
     cellSize = CGSizeMake([trainingTableView bounds].size.width, 60); 
 }

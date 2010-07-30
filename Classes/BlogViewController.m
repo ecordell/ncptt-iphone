@@ -44,6 +44,7 @@
 }
 
 - (void)parseXMLFileAtURL:(NSString *)URL { 
+    NSAutoreleasePool *apool = [[NSAutoreleasePool alloc] init];
     stories = [[NSMutableArray alloc] init]; //you must then convert the path to a proper NSURL or it won't work
     NSURL *xmlURL = [NSURL URLWithString:URL]; // here, for some reason you have to use NSClassFromString when trying to alloc NSXMLParser, otherwise you will get an object not found error 
     // this may be necessary only for the toolchain 
@@ -53,12 +54,13 @@
     [rssParser setShouldReportNamespacePrefixes:NO]; 
     [rssParser setShouldResolveExternalEntities:NO]; 
     [rssParser parse]; 
+    [apool release];
 }
 - (void)viewDidAppear:(BOOL)animated { 
     [super viewDidAppear:animated]; 
     if ([stories count] == 0) { 
         NSString * path = @"http://www.ncptt.nps.gov/feed/"; 
-        [self parseXMLFileAtURL:path]; 
+        [self performSelectorInBackground:@selector(parseXMLFileAtURL:) withObject:path]; 
     } 
     cellSize = CGSizeMake([blogTableView bounds].size.width, 60); 
 }
@@ -82,17 +84,19 @@
         currentDescription = [[NSMutableString alloc] init]; 
         currentCreator = [[NSMutableString alloc] init]; 
         currentUrl = [[NSMutableString alloc] init];
-        currentImage = [[NSMutableString alloc] init];
+        currentImageUrl = [[NSMutableString alloc] init];
+        currentImage = [[UIImage alloc] init];
     } 
 } 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{ 
     //NSLog(@"ended element: %@", elementName); 
     if ([elementName isEqualToString:@"item"]) { 
+        currentImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://images.neopets.com/items/scarypet_fat_cat.gif"]]];
         // save values to an item, then store that item into the array... 
         [item setObject:currentTitle forKey:@"title"]; 
         [item setObject:currentCreator forKey:@"dc:creator"]; 
-        [item setObject:currentDescription forKey:@"description"]; 
-        [item setObject:currentDate forKey:@"pubDate"]; 
+        [item setObject:[self flattenHTML:currentDescription] forKey:@"description"]; 
+        [item setObject:[currentDate substringToIndex:16] forKey:@"pubDate"]; 
         [item setObject:currentUrl forKey:@"link"];
         [item setObject:currentImage forKey:@"image"];
         [stories addObject:[item copy]]; 
@@ -112,8 +116,8 @@
         [currentDate appendString:string]; 
     } else if ([currentElement isEqualToString:@"link"]) { 
         [currentUrl appendString:string]; 
-    } else if ([currentElement isEqualToString:@"image"]) { 
-        [currentImage appendString:string]; 
+    } else if ([currentElement isEqualToString:@"image"]) {
+        [currentImageUrl appendString:string];
     } 
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser { 
@@ -151,10 +155,10 @@
     } // Set up the cell 
     int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1]; 
     cell.title.text = [[stories objectAtIndex:storyIndex] objectForKey:@"title"];
-    cell.description.text = [self flattenHTML:[[stories objectAtIndex:storyIndex] objectForKey:@"description"]];
-    cell.date.text = [[[stories objectAtIndex:storyIndex] objectForKey:@"pubDate"] substringToIndex:16];
+    cell.description.text = [[stories objectAtIndex:storyIndex] objectForKey:@"description"];
+    cell.date.text = [[stories objectAtIndex:storyIndex] objectForKey:@"pubDate"];
     cell.creator.text = [[stories objectAtIndex:storyIndex] objectForKey:@"dc:creator"];
-    //cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://cvcl.mit.edu/hybrid/cat2.jpg"]]];
+    cell.imageView.image = [[stories objectAtIndex:storyIndex] objectForKey:@"image"];
     return cell; 
 }
 
