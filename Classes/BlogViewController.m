@@ -13,7 +13,7 @@
 
 @synthesize blogTableView, entryController;
 
-/*
+
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -21,7 +21,7 @@
     }
     return self;
 }
-*/
+
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -62,7 +62,7 @@
         NSString * path = @"http://www.ncptt.nps.gov/feed/"; 
         [self performSelectorInBackground:@selector(parseXMLFileAtURL:) withObject:path]; 
     } 
-    cellSize = CGSizeMake([blogTableView bounds].size.width, 60); 
+    cellSize = CGSizeMake([blogTableView bounds].size.width, 60);
 }
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
@@ -121,8 +121,8 @@
     } 
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser { 
-    [activityIndicator stopAnimating]; 
-    [activityIndicator removeFromSuperview]; 
+    [blogActivityIndicator setHidden:YES]; 
+    [blogActivityIndicator removeFromSuperview];
     NSLog(@"all done!"); 
     NSLog(@"stories array has %d items", [stories count]); 
     [blogTableView reloadData]; 

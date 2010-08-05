@@ -127,8 +127,8 @@
     } 
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser { 
-    [activityIndicator stopAnimating]; 
-    [activityIndicator removeFromSuperview]; 
+    [activityIndicator setHidden:YES]; 
+    [activityIndicator removeFromSuperview];
     NSLog(@"all done!"); 
     NSLog(@"stories array has %d items", [stories count]); 
     [podcastTableView reloadData]; 

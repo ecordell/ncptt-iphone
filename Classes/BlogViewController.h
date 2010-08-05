@@ -12,7 +12,7 @@
 
 @interface BlogViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
     IBOutlet UITableView *blogTableView;
-    UIActivityIndicatorView * activityIndicator; 
+    IBOutlet UIActivityIndicatorView * blogActivityIndicator; 
     CGSize cellSize; 
     NSXMLParser * rssParser; 
     NSMutableArray * stories; 

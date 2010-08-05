@@ -12,7 +12,7 @@
 
 @interface TrainingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
     IBOutlet UITableView *trainingTableView;
-    UIActivityIndicatorView * activityIndicator; 
+    IBOutlet UIActivityIndicatorView * activityIndicator; 
     CGSize cellSize; 
     NSXMLParser * rssParser; 
     NSMutableArray * stories; 

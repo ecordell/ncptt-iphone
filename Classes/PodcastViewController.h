@@ -14,8 +14,8 @@
     IBOutlet UITableView *podcastTableView;
     IBOutlet UIButton *subscribeButton;
     IBOutlet UIButton *rateButton;
+    IBOutlet UIActivityIndicatorView * activityIndicator; 
     
-    UIActivityIndicatorView * activityIndicator; 
     CGSize cellSize; 
     NSXMLParser * rssParser; 
     NSMutableArray * stories; 

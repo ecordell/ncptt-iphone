@@ -12,7 +12,7 @@
 
 @interface ProductViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate> {
     IBOutlet UITableView *productTableView;
-    UIActivityIndicatorView * activityIndicator; 
+    IBOutlet UIActivityIndicatorView * activityIndicator; 
     CGSize cellSize; 
     NSXMLParser * rssParser; 
     NSMutableArray * stories; 
